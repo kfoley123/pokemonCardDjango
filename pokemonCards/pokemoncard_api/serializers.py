@@ -4,4 +4,4 @@ from pokemoncard_api.models import PokemonCard
 class PokemonCardSerializer(serializers.ModelSerializer):
     class Meta:
         model = PokemonCard
-        fields = "__all__"
+        fields = ('name', 'pokemonType', 'HP')

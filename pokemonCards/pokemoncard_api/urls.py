@@ -1,11 +1,10 @@
-from pokemoncard_api.views import PokemonCardViewset
-from rest_framework.routers import DefaultRouter
+from django.contrib import admin 
+from django.urls import path,include
+from rest_framework import routers 
 from pokemoncard_api import views
 
-
-router = DefaultRouter()
+router = routers.DefaultRouter()
 router.register(r'pokemoncards', views.PokemonCardViewset, basename = 'pokemoncard')
 urlpatterns = [
-    path('admin/', admin.site.urls),
-    path('pokemoncard_api/', include('pokemoncard_api.urls'))
+    path('', include(router.urls)),
 ]
