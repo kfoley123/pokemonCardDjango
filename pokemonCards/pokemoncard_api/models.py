@@ -6,6 +6,7 @@ class PokemonCard(models.Model):
     name = models.CharField(max_length=50)
     pokemonType = models.CharField(max_length=30)
     HP = models.CharField(max_length=3)
+    pokedexIndex = models.IntegerField(default=0)
 
     def __str__(self):
         return self.name
