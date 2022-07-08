@@ -11,3 +11,8 @@ class PokemonCard(models.Model):
     def __str__(self):
         return self.name
 
+class PokemonType(models.Model):
+    pokemonType = models.CharField(max_length=30)
+
+    def __str__(self):
+        return self.pokemonType
