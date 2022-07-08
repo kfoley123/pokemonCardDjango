@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import PokemonCard, PokemonType
-from .serializers import PokemonCardSerializer, PokemonTypeSerializer
+from .models import PokemonCard, PokemonType, PokemonCardSet
+from .serializers import PokemonCardSerializer, PokemonTypeSerializer, PokemonCardSetSerializer
 from rest_framework import viewsets 
 
 class PokemonCardViewset(viewsets.ModelViewSet):
@@ -18,4 +18,11 @@ class PokemonTypeViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = PokemonType.objects.all()
+        return queryset
+
+class PokemonCardSetViewset(viewsets.ModelViewSet):
+    serializer_class = PokemonCardSetSerializer
+
+    def get_queryset(self):
+        queryset = PokemonCardSet.objects.all()
         return queryset

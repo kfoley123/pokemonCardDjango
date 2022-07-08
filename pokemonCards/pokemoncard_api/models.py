@@ -16,3 +16,12 @@ class PokemonType(models.Model):
 
     def __str__(self):
         return self.pokemonType
+
+class PokemonCardSet(models.Model):
+    name = models.CharField(max_length=50)
+    productionstart = models.DateField()
+    icon = models.CharField(max_length=2048)
+
+    def __str__(self):
+        return self.name
+
