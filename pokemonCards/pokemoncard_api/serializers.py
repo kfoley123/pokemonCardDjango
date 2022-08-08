@@ -10,19 +10,24 @@ class PokemonTypeSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PokemonCardSetSerializer(serializers.ModelSerializer):
-    
 
     class Meta:
         model = PokemonCardSet
-        fields = ('name', 'productionstart', 'icon') 
+        fields = '__all__'
 
 
-class PokemonCardSerializer(serializers.ModelSerializer):
+class PokemonCardReadSerializer(serializers.ModelSerializer):
     id = serializers.ReadOnlyField()
-    pokemonCardSet=PokemonCardSetSerializer()
-    type=serializers.SlugRelatedField(many=False, read_only=True, slug_field='pokemonType')
-
     
     class Meta:
         model = PokemonCard
-        fields = ('id', 'pokedexIndex','name', 'pokemonType', 'HP', 'pokemonCardSet', 'type')
+        fields = ('id', 'pokedexIndex','name', 'HP', 'pokemonCardSet', 'type')
+        depth =1
+        
+
+class PokemonCardWriteSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = PokemonCard
+        fields = ('pokedexIndex','name', 'HP', 'pokemonCardSet', 'type')
+        

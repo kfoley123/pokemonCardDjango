@@ -1,10 +1,11 @@
 from django.shortcuts import render
 from .models import PokemonCard, PokemonType, PokemonCardSet
-from .serializers import PokemonCardSerializer, PokemonTypeSerializer, PokemonCardSetSerializer
+from .serializers import PokemonCardReadSerializer,PokemonCardWriteSerializer, PokemonTypeSerializer, PokemonCardSetSerializer
 from rest_framework import viewsets 
 
+
 class PokemonCardViewset(viewsets.ModelViewSet):
-    serializer_class = PokemonCardSerializer
+    # serializer_class = PokemonCardReadSerializer
 
     def get_queryset(self):
         queryset = PokemonCard.objects.all()
@@ -12,6 +13,13 @@ class PokemonCardViewset(viewsets.ModelViewSet):
         if pokemonType is not None:
             queryset = queryset.filter(pokemonType=pokemonType)
         return queryset
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "PUT" or method == "POST":
+            return PokemonCardWriteSerializer
+        else: 
+            return PokemonCardReadSerializer
 
 class PokemonTypeViewset(viewsets.ModelViewSet):
     serializer_class = PokemonTypeSerializer
