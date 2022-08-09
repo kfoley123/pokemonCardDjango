@@ -32,5 +32,5 @@ class PokemonCollection(models.Model):
     quantity = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.user
 

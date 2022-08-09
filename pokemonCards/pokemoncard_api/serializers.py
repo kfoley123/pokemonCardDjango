@@ -41,3 +41,4 @@ class PokemonCollectionWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = PokemonCollection
         fields = '__all__'
+        

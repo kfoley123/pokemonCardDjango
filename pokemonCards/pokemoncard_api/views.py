@@ -48,3 +48,4 @@ class PokemonCollectionViewset(viewsets.ModelViewSet):
             return PokemonCollectionWriteSerializer
         else: 
             return PokemonCollectionReadSerializer
+            
