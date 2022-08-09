@@ -26,3 +26,11 @@ class PokemonCardSet(models.Model):
     def __str__(self):
         return self.name
 
+class PokemonCollection(models.Model):
+    user = models.CharField(max_length=100)
+    collectedCard = models.ForeignKey("PokemonCard", on_delete=models.CASCADE)
+    quantity = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.name
+
