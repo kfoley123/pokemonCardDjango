@@ -7,6 +7,7 @@ router = routers.DefaultRouter()
 router.register(r'pokemoncards', views.PokemonCardViewset, basename = 'pokemoncard')
 router.register(r'pokemontypes', views.PokemonTypeViewset, basename ='pokemontype')
 router.register(r'pokemoncardsets', views.PokemonCardSetViewset, basename = 'pokemoncardset')
+router.register(r'pokemoncollections', views.PokemonCollectionViewset, basename = 'pokemoncollection' )
 urlpatterns = [
     path('', include(router.urls)),
 ]

@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from pokemoncard_api.models import PokemonCard, PokemonType, PokemonCardSet
+from pokemoncard_api.models import PokemonCard, PokemonType, PokemonCardSet,  PokemonCollection
 
 
 
@@ -30,4 +30,15 @@ class PokemonCardWriteSerializer(serializers.ModelSerializer):
     class Meta:
         model = PokemonCard
         fields = ('pokedexIndex','name', 'HP', 'pokemonCardSet', 'type')
+
+class PokemonCollectionReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PokemonCollection
+        fields = '__all__'
+        depth = 2
+
+class PokemonCollectionWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PokemonCollection
+        fields = '__all__'
         
