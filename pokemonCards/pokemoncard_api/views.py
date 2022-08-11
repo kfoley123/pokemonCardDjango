@@ -5,13 +5,13 @@ from rest_framework import viewsets
 
 
 class PokemonCardViewset(viewsets.ModelViewSet):
-    # serializer_class = PokemonCardReadSerializer
+
 
     def get_queryset(self):
         queryset = PokemonCard.objects.all()
         pokemonType = self.request.query_params.get('pokemontype')
         if pokemonType is not None:
-            queryset = queryset.filter(pokemonType=pokemonType)
+            queryset = queryset.filter(type=pokemonType)
         return queryset
 
     def get_serializer_class(self):

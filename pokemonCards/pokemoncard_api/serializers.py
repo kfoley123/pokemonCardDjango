@@ -21,7 +21,7 @@ class PokemonCardReadSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = PokemonCard
-        fields = ('id', 'pokedexIndex','name', 'HP', 'pokemonCardSet', 'type')
+        fields = ('id','image', 'pokedexIndex','name', 'HP', 'pokemonCardSet', 'type')
         depth =1
         
 
@@ -29,7 +29,7 @@ class PokemonCardWriteSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = PokemonCard
-        fields = ('pokedexIndex','name', 'HP', 'pokemonCardSet', 'type')
+        fields = ('pokedexIndex','name', 'image', 'HP', 'pokemonCardSet', 'type')
 
 class PokemonCollectionReadSerializer(serializers.ModelSerializer):
     class Meta:
