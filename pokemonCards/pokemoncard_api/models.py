@@ -8,6 +8,7 @@ class PokemonCard(models.Model):
     pokedexIndex = models.IntegerField(default=0)
     pokemonCardSet = models.ForeignKey("PokemonCardSet", on_delete=models.CASCADE, default=1)
     type = models.ForeignKey("PokemonType", on_delete=models.CASCADE, default=1)
+    image=models.URLField(default=1)
 
     def __str__(self):
         return self.name
@@ -29,7 +30,7 @@ class PokemonCardSet(models.Model):
 class PokemonCollection(models.Model):
     user = models.CharField(max_length=100)
     collectedCard = models.ForeignKey("PokemonCard", on_delete=models.CASCADE)
-    quantity = models.CharField(max_length=100)
+    quantity = models.IntegerField(default=1)
 
     def __str__(self):
         return self.user
