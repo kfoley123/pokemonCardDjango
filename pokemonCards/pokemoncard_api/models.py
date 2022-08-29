@@ -35,3 +35,13 @@ class PokemonCollection(models.Model):
     def __str__(self):
         return self.user
 
+# User Models 
+
+class User(models.Model):
+    username = models.CharField(max_length=256)
+    password = models.CharField(max_length=256)
+    email = models.CharField(max_length=256)
+    profilePic = models.CharField(max_length=2048)
+
+    def __str__(self):
+        return self.username

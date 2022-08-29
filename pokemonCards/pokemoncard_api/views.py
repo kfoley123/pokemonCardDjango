@@ -6,7 +6,6 @@ from rest_framework import viewsets
 
 class PokemonCardViewset(viewsets.ModelViewSet):
 
-
     def get_queryset(self):
         queryset = PokemonCard.objects.all()
         pokemonType = self.request.query_params.get('pokemontype')
@@ -45,6 +44,15 @@ class PokemonCollectionViewset(viewsets.ModelViewSet):
 
     def get_queryset(self):
         queryset = PokemonCollection.objects.all()
+
+        pokemonType = self.request.query_params.get('pokemontype')
+        pokemonSet = self.request.query_params.get('pokemonset')
+
+        if pokemonType is not None:
+            queryset = queryset.filter(collectedCard__type=pokemonType)
+        if pokemonSet is not None:
+            queryset = queryset.filter(collectedCard__pokemonCardSet=pokemonSet)
+
         return queryset
     
     def get_serializer_class(self):
