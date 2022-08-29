@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import PokemonCard, PokemonCollection, PokemonType, PokemonCardSet
-from .serializers import PokemonCardReadSerializer,PokemonCardWriteSerializer, PokemonCollectionReadSerializer, PokemonCollectionWriteSerializer, PokemonTypeSerializer, PokemonCardSetSerializer
+from .models import PokemonCard, PokemonCollection, PokemonType, PokemonCardSet, User
+from .serializers import PokemonCardReadSerializer,PokemonCardWriteSerializer, PokemonCollectionReadSerializer, PokemonCollectionWriteSerializer, PokemonTypeSerializer, PokemonCardSetSerializer, UserSerializer
 from rest_framework import viewsets 
 
 
@@ -61,4 +61,10 @@ class PokemonCollectionViewset(viewsets.ModelViewSet):
             return PokemonCollectionWriteSerializer
         else: 
             return PokemonCollectionReadSerializer
-            
+
+class UserViewset(viewsets.ModelViewSet):
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        queryset= User.objects.all()
+        return queryset 
