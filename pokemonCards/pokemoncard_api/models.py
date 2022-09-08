@@ -41,7 +41,9 @@ class User(models.Model):
     username = models.CharField(max_length=256)
     password = models.CharField(max_length=256)
     email = models.CharField(max_length=256)
-    profilePic = models.CharField(max_length=2048)
+    profilePic = models.CharField(max_length=2048, default="https://www.kindpng.com/picc/m/121-1210821_cat-face-cute-cat-face-clipart-hd-png.png")
+    loggedIn = models.BooleanField(default=False)
 
     def __str__(self):
         return self.username
+

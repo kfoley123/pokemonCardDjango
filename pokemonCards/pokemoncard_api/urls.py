@@ -9,6 +9,7 @@ router.register(r'pokemontypes', views.PokemonTypeViewset, basename ='pokemontyp
 router.register(r'pokemoncardsets', views.PokemonCardSetViewset, basename = 'pokemoncardset')
 router.register(r'pokemoncollections', views.PokemonCollectionViewset, basename = 'pokemoncollection')
 router.register(r'users', views.UserViewset, basename = 'user')
+router.register(r'login', views.LogInViewset, basename = 'login')
 urlpatterns = [
     path('', include(router.urls)),
 ]

@@ -1,7 +1,11 @@
+from django.http import JsonResponse
 from django.shortcuts import render
+from rest_framework.response import Response
 from .models import PokemonCard, PokemonCollection, PokemonType, PokemonCardSet, User
-from .serializers import PokemonCardReadSerializer,PokemonCardWriteSerializer, PokemonCollectionReadSerializer, PokemonCollectionWriteSerializer, PokemonTypeSerializer, PokemonCardSetSerializer, UserSerializer
-from rest_framework import viewsets 
+from .serializers import *
+from rest_framework import viewsets, status
+
+
 
 
 class PokemonCardViewset(viewsets.ModelViewSet):
@@ -66,5 +70,28 @@ class UserViewset(viewsets.ModelViewSet):
     serializer_class = UserSerializer
 
     def get_queryset(self):
-        queryset= User.objects.all()
+        queryset = User.objects.all()
         return queryset 
+
+class LogInViewset(viewsets.ModelViewSet):
+    serializer_class = LogInSerializer
+
+    def get_queryset(self):
+        queryset = User.objects.all()
+        return queryset
+
+    def update(self, request, *args, **kwargs):
+        
+        password = request.data.get("password")
+        try:
+            userInDB = User.objects.get(password=password)
+        except:
+            return Response(status=status.HTTP_404_NOT_FOUND)
+
+        if userInDB:
+            serializer=LogInSerializer(userInDB, data=request.data, partial=True)
+            if serializer.is_valid():
+                serializer.save()
+                return Response(status=status.HTTP_200_OK)
+     
+        
