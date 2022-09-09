@@ -93,5 +93,6 @@ class LogInViewset(viewsets.ModelViewSet):
             if serializer.is_valid():
                 serializer.save()
                 return Response(status=status.HTTP_200_OK)
+        else: return Response(status=status.HTTP_404_NOT_FOUND)
      
         
