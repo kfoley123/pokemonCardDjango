@@ -28,7 +28,7 @@ class PokemonCardSet(models.Model):
         return self.name
 
 class PokemonCollection(models.Model):
-    user = models.CharField(max_length=100)
+    user = models.ForeignKey("User", on_delete=models.CASCADE)
     collectedCard = models.ForeignKey("PokemonCard", on_delete=models.CASCADE)
     quantity = models.IntegerField(default=1)
 
