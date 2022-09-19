@@ -51,12 +51,14 @@ class PokemonCollectionViewset(viewsets.ModelViewSet):
 
         pokemonType = self.request.query_params.get('pokemontype')
         pokemonSet = self.request.query_params.get('pokemonset')
+        user = self.request.query_params.get('user')
 
         if pokemonType is not None:
             queryset = queryset.filter(collectedCard__type=pokemonType)
         if pokemonSet is not None:
             queryset = queryset.filter(collectedCard__pokemonCardSet=pokemonSet)
-
+        if user is not None:
+            queryset = queryset.filter(user=user)
         return queryset
     
     def get_serializer_class(self):

@@ -31,24 +31,27 @@ class PokemonCardWriteSerializer(serializers.ModelSerializer):
         model = PokemonCard
         fields = ('pokedexIndex','name', 'image', 'HP', 'pokemonCardSet', 'type')
 
-class PokemonCollectionReadSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PokemonCollection
-        fields = '__all__'
-        depth = 2
-
-class PokemonCollectionWriteSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = PokemonCollection
-        fields = '__all__'
-
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ('id','username','profilePic'  )
 
 class LogInSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ('id', 'username', 'loggedIn')
+
+class PokemonCollectionReadSerializer(serializers.ModelSerializer):
+    user = UserSerializer()
+    collectedCard = PokemonCardReadSerializer()
+
+    class Meta:
+        model = PokemonCollection
+        fields = ('id', 'user', 'collectedCard', 'quantity')
+        
+
+class PokemonCollectionWriteSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = PokemonCollection
+        fields = '__all__'
         
