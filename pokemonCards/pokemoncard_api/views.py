@@ -94,7 +94,7 @@ class LogInViewset(viewsets.ModelViewSet):
             serializer=LogInSerializer(userInDB, data=request.data, partial=True)
             if serializer.is_valid():
                 serializer.save()
-                return Response(status=status.HTTP_200_OK)
+                return Response(serializer.data, status=status.HTTP_200_OK)
         else: return Response(status=status.HTTP_404_NOT_FOUND)
      
         

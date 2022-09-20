@@ -39,7 +39,7 @@ class UserSerializer(serializers.ModelSerializer):
 class LogInSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ('id', 'username', 'loggedIn')
+        fields = ('id', 'username', 'loggedIn', 'profilePic')
 
 class PokemonCollectionReadSerializer(serializers.ModelSerializer):
     user = UserSerializer()
