@@ -69,7 +69,13 @@ class PokemonCollectionViewset(viewsets.ModelViewSet):
             return PokemonCollectionReadSerializer
 
 class UserViewset(viewsets.ModelViewSet):
-    serializer_class = UserSerializer
+
+    def get_serializer_class(self):
+        method = self.request.method
+        if method == "POST":
+            return UserWriteSerializer
+        else:
+            return UserReadSerializer
 
     def get_queryset(self):
         queryset = User.objects.all()
