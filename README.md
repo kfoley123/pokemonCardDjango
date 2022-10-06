@@ -23,13 +23,14 @@ Kortney Foley
 
 This project is paired with a frontend that can be accessed [here](https://github.com/kfoley123/pokemoncard_frontend)
 
-The purpose of designing this Pokemon Card Collection app was to develop my back end and database creation skills. Original version of the app had full CRUD functionality so that a card could be updated, added or deleted, but it didn't make sense to keep all these functions for general users, so most of these have been removed or limited to "admin" account user.
+The purpose of designing this Pokemon Card Collection app was to develop my back end and database creation skills. This API has full CRUD functionality for most endpoints.
 
 The App allows users to view all Pokemon cards that have been added to the database, sort them by different filters (i.e type and/or specifc card set) and create a user if signed out. When signed in, users can create their own collections of cards.
 
 TODO:
 
--   Add endpoint for Pokedex Index filtering
+-   Add Pokedex Index filtering to an endpoint
+-   Add search functionality
 
 ---
 
